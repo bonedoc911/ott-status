@@ -4,10 +4,15 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 jobs:
-  graphs:
+  release:
+    name: Generate graphs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: upptime/graphs@v1.2.18
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: upptime/uptime-monitor@v1.41.0
+        with:
+          command: "graphs"
+        env:
+          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
