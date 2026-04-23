@@ -1,29 +1,57 @@
-owner: bonedoc911
-repo: ott-status
+owner: OpenTrustSeal
+repo: status
+
+# Issue assignees get emailed by GitHub when an incident issue opens.
+# Free alerting without SMTP config. Add more handles as the team grows.
+assignees:
+  - bonedoc911
 
 sites:
-  - name: OpenTrustToken API
-    url: https://api.opentrusttoken.com/health
-    expectedStatusCodes:
-      - 200
+  - name: "API health"
+    url: https://api.opentrustseal.com/health
+    expectedStatusCodes: [200]
 
-  - name: OpenTrustToken Landing
-    url: https://opentrusttoken.com
-    expectedStatusCodes:
-      - 200
+  - name: "API: /v1/check end-to-end (stripe.com)"
+    url: https://api.opentrustseal.com/v1/check/stripe.com
+    expectedStatusCodes: [200]
+    headers:
+      - "User-Agent: Upptime-OpenTrustSeal/1.0"
 
-  - name: OpenTrustToken Dashboard
-    url: https://opentrusttoken.com/dashboard.html
-    expectedStatusCodes:
-      - 200
+  - name: "API: /v1/stats/dataset"
+    url: https://api.opentrustseal.com/v1/stats/dataset
+    expectedStatusCodes: [200]
+    headers:
+      - "User-Agent: Upptime-OpenTrustSeal/1.0"
+
+  - name: "API: /stats (fetch-tier counters)"
+    url: https://api.opentrustseal.com/stats
+    expectedStatusCodes: [200]
+    headers:
+      - "User-Agent: Upptime-OpenTrustSeal/1.0"
+
+  - name: "Signing key published (DID doc)"
+    url: https://opentrustseal.com/.well-known/did.json
+    expectedStatusCodes: [200]
+
+  - name: "Landing page"
+    url: https://opentrustseal.com
+    expectedStatusCodes: [200]
+
+  - name: "Dashboard"
+    url: https://opentrustseal.com/dashboard.html
+    expectedStatusCodes: [200]
+
+  - name: "Methodology page"
+    url: https://opentrustseal.com/docs/methodology.html
+    expectedStatusCodes: [200]
 
 status-website:
-  cname: ""
-  logoUrl: ""
-  name: OpenTrustToken Status
+  cname: "status.opentrustseal.com"
+  logoUrl: "https://opentrustseal.com/otsseal.png"
+  name: OpenTrustSeal Status
   theme: dark
-  introTitle: "OpenTrustToken system status"
-  introMessage: "Real-time monitoring of the OpenTrustToken API and web properties. Updated every 5 minutes."
+  introTitle: "OpenTrustSeal system status"
+  introMessage: "Real-time monitoring of the OpenTrustSeal trust-attestation API and web properties. Checks run every 5 minutes from GitHub Actions runners."
 
 workflowSchedule:
   graphs: "0 0 * * *"
