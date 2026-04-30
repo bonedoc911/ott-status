@@ -1,7 +1,7 @@
 url: https://opentrustseal.com/dashboard.html
-status: up
-code: 200
-responseTime: 80
-lastUpdated: 2026-04-29T23:54:24.386Z
+status: down
+code: 404
+responseTime: 14
+lastUpdated: 2026-04-30T12:23:19.781Z
 startTime: 2026-04-23T04:21:45.431Z
 generator: Upptime <https://github.com/upptime/upptime>
